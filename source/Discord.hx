@@ -2,6 +2,7 @@ package;
 
 #if DISCORD_CLIENT
 import discord_rpc.DiscordRpc;
+
 using StringTools;
 
 class DiscordClient
@@ -35,18 +36,18 @@ class DiscordClient
 	static function onReady()
 	{
 		DiscordRpc.presence({
-            state: null,
+			state: null,
 			details: null,
-            startTimestamp: null,
-            endTimestamp: null,
+			startTimestamp: null,
+			endTimestamp: null,
 			largeImageKey: 'your discord icon here',
-            largeImageText: null,
+			largeImageText: null,
 			smallImageKey: null,
-            smallImageText: null,
-            partyID: null,
-            partySize: null,
-            partyMax: null,
-            joinSecret: null
+			smallImageText: null,
+			partyID: null,
+			partySize: null,
+			partyMax: null,
+			joinSecret: null
 		});
 	}
 
@@ -69,26 +70,25 @@ class DiscordClient
 		trace("Discord Client initialized");
 	}
 
-    /**
-			 * Function that changes the `Discord Rich Presence`.
-			 * @param   state   The second line in the presence (use it for info).
-			 * @param   details   The first line in the presence (use for current state and details).
-             * @param   smallImageKey The small image name.
-    **/
-
+	/**
+	 * Function that changes the `Discord Rich Presence`.
+	 * @param   state   The second line in the presence (use it for info).
+	 * @param   details   The first line in the presence (use for current state and details).
+	 * @param   smallImageKey The small image name.
+	**/
 	public static function changePresence(state:String, details:String, smallImageKey:String, addLittleIcon:Bool = false)
 	{
 		DiscordRpc.presence({
 			state: state,
 			details: details,
 			largeImageKey: 'your game discord image',
-            largeImageText: null,
+			largeImageText: null,
 			smallImageKey: smallImageKey,
-            smallImageText: null, //these are unnecesary but whatever
-            partyID: null,
-            partySize: null,
-            partyMax: null,
-            joinSecret: null
+			smallImageText: null, // these are unnecesary but whatever
+			partyID: null,
+			partySize: null,
+			partyMax: null,
+			joinSecret: null
 		});
 	}
 }

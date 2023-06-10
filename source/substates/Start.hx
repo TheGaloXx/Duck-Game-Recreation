@@ -16,14 +16,14 @@ class Start extends flixel.FlxState
 
 		#if DISCORD_CLIENT
 		Discord.DiscordClient.initialize();
-		Utils.presence('Playing', 'test');
+		Utils.presence('Playing', 'test', 'x');
 		#end
 
 		Utils.title(null);
 
 		// flixel.system.FlxAssets.FONT_DEFAULT = Paths.font('Storytime.ttf', PRELOAD);
 		FlxG.worldBounds.set(0, 0);
-		flixel.FlxSprite.defaultAntialiasing = true;
+		// flixel.FlxSprite.defaultAntialiasing = true;
 
 		#if (!FLX_NO_SOUND_TRAY && !FLX_NO_SOUND_SYSTEM)
 		FlxG.sound.muted = false;
@@ -47,7 +47,7 @@ class Start extends flixel.FlxState
 		lime.app.Application.current.onExit.add(function(exitCode)
 		{
 			#if DISCORD_CLIENT
-			DiscordClient.shutdown();
+			Discord.DiscordClient.shutdown();
 			#end
 
 			#if sys
@@ -65,12 +65,10 @@ class Start extends flixel.FlxState
 	private function saveCompiles()
 	{
 		#if sys
-		var GAME_NAME = lime.app.Application.current.meta.get('version'); // Change this to your game's folder name to save the times compiled
+		var GAME_NAME = 'Duck-Game-Recreation';
 
 		var thePath = lime.system.System.desktopDirectory + 'Carpetas/Source Code/other/$GAME_NAME/compiles.galo';
 		var compiles:Int = 0;
-
-		trace('Path exists: ${sys.FileSystem.exists(thePath)}.');
 
 		if (sys.FileSystem.exists(thePath))
 			compiles = Std.parseInt(sys.io.File.getContent(thePath));

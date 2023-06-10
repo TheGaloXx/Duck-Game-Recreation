@@ -1,26 +1,10 @@
 package;
 
-import lime.app.Application;
-
 using StringTools;
-
-#if (sys && CRASH_HANDLER)
-import haxe.CallStack.StackItem;
-import haxe.CallStack;
-import haxe.io.Path;
-import lime.app.Application;
-import openfl.Lib;
-import openfl.events.UncaughtErrorEvent;
-import sys.FileSystem;
-import sys.FileSystem;
-import sys.io.File;
-import sys.io.File;
-import sys.io.Process;
-#end
 
 class Main extends openfl.display.Sprite
 {
-	public static var appTitle:String = Application.current.meta.get('title');
+	public static var appTitle:String = 'Duck Game Recreation';
 
 	public function new()
 	{
@@ -32,8 +16,8 @@ class Main extends openfl.display.Sprite
 		flixel.addons.studio.FlxStudio.create();
 		#end
 
-		#if (sys && CRASH_HANDLER)
-		Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, onCrash);
+		#if sys
+		openfl.Lib.current.loaderInfo.uncaughtErrorEvents.addEventListener(openfl.events.UncaughtErrorEvent.UNCAUGHT_ERROR, onCrash);
 		#end
 
 		#if (hl && !debug)
@@ -42,12 +26,12 @@ class Main extends openfl.display.Sprite
 	}
 
 	// Code was entirely made by sqirra-rng for their fnf engine named "Izzy Engine", big props to them!!!
-	#if (sys && CRASH_HANDLER)
-	private function onCrash(e:UncaughtErrorEvent):Void
+	#if sys
+	private function onCrash(e:openfl.events.UncaughtErrorEvent):Void
 	{
 		var errMsg:String = "";
 		var path:String;
-		var callStack:Array<StackItem> = CallStack.exceptionStack(true);
+		var callStack:Array<haxe.CallStack.StackItem> = haxe.CallStack.exceptionStack(true);
 		var dateNow:String = Date.now().toString();
 
 		dateNow = dateNow.replace(" ", "_");
@@ -68,15 +52,15 @@ class Main extends openfl.display.Sprite
 
 		errMsg += "\nUncaught Error: " + e.error + "\nPlease report this error to the dev team.\n\n> Crash Handler written by: sqirra-rng";
 
-		if (!FileSystem.exists("./crash/"))
-			FileSystem.createDirectory("./crash/");
+		if (!sys.FileSystem.exists("./crash/"))
+			sys.FileSystem.createDirectory("./crash/");
 
-		File.saveContent(path, errMsg + "\n");
+		sys.io.File.saveContent(path, errMsg + "\n");
 
 		Sys.println(errMsg);
-		Sys.println("Crash dump saved in " + Path.normalize(path));
+		Sys.println("Crash dump saved in " + haxe.io.Path.normalize(path));
 
-		Application.current.window.alert(errMsg, "Error!");
+		lime.app.Application.current.window.alert(errMsg, "Error!");
 		#if DISCORD_CLIENT
 		DiscordClient.shutdown();
 		#end

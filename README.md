@@ -12,3 +12,8 @@ Started project.
 ## [0.0.1] - 10-6-2023
 
 Added template.
+
+## [0.0.2] - 10-6-2023
+
+Added game icons.
+Other minor settings.

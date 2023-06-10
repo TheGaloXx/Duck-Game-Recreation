@@ -1,8 +1,6 @@
 package menus;
 
-import flixel.FlxState;
-
-class PlayState extends FlxState
+class PlayState extends flixel.FlxState
 {
 	override public function create()
 	{
