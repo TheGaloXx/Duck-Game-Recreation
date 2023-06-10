@@ -3,8 +3,12 @@
 
 # Changelog
 
-`[version] - day-month-year
+`[version] - day-month-year`
 
-## [0.0.0] - 3-5-2023
+## [0.0.0] - 10-6-2023
 
 Started project.
+
+## [0.0.1] - 10-6-2023
+
+Added template.
