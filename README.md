@@ -17,3 +17,7 @@ Added template.
 
 Added game icons.
 Other minor settings.
+
+## [0.0.3] - 10-6-2023
+
+Added duck, animations, collisions and basic movement.

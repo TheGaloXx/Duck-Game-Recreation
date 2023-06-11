@@ -9,7 +9,8 @@ class Main extends openfl.display.Sprite
 	public function new()
 	{
 		super();
-		addChild(new flixel.FlxGame(0, 0, substates.Start));
+		//					1280 / 4      720 / 4
+		addChild(new flixel.FlxGame(320, 180, substates.Start, 60, 60, true));
 		addChild(new Objects.FPSCounter());
 
 		#if debug

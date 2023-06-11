@@ -12,7 +12,7 @@ class Paths
 
 	static public function getLibraryPath(file:String, library:Library = PRELOAD)
 	{
-		return if (library == PRELOAD || library == DEFAULT) getPreloadPath(file); else getLibraryPathForce(file, library);
+		return getLibraryPathForce(file, library);
 	}
 
 	inline static function getLibraryPathForce(file:String, library:Library)

@@ -6,6 +6,8 @@ class Start extends flixel.FlxState
 {
 	override function create()
 	{
+		bgColor = 0;
+
 		#if debug
 		saveCompiles();
 
